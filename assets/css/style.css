@@ -1,0 +1,10 @@
+body {
+  background: linear-gradient(white,black);
+  font-family: 'Gloria Hallelujah', cursive;
+}
+.instructions {
+	padding-bottom: 5px;
+}
+.jumbotron {
+	box-shadow: 5px 10px 10px 5px #888888;
+}

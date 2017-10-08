@@ -3,119 +3,50 @@
 <head>
 	<title>The Psychic Game</title>
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	 <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700|Cinzel:400,700|Permanent+Marker" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+	
  	<script src="https://use.fontawesome.com/f4a1380ac2.js"></script>
 </head>
 <body>
-	<div class="row">
-		<div class="col-md-4">
-		</div>
-		<div class="col-md-4 text-center">
-			<div class="wrapper">
-				<header class="page-header">
-				<!--<i class="fa fa-spinner fa-pulse fa-4x fa-fw"></i>
-						<span class="sr-only">Loading...</span></i>-->
-						<h1>The Psychic Game</h1>
-				</header>
-				<div class="instructions">Want to play a game? Guess what letter I'm thinking of
+	<div class="view">
+		<div class="full-bg-img flex-center">
+			<div class="row">
+				<div class="col-md-4">
 				</div>
-				<div class="jumbotron">
-					<ul class="list-group">
-						<li class="list-group-item">WINS:<p id="wins">0</p></li>
-						<li class="list-group-item">LOSSES:<p id="losses">0</p></li>
-            			<li class="list-group-item">GUESSES LEFT: <p id="guessesLeft"></p></li>
-						<li class="list-group-item">YOUR GUESES SO FAR:<p id="guessSoFar"></p></li>
-					</ul>
+				<div class="col-md-4 text-center">
+					<div class="wrapper">
+						<header class="page-header">
+							<i class="fa fa-spinner fa-pulse fa-4x fa-fw"></i>
+							<span class="sr-only">Loading...</span></i>
+							<h1>The Psychic Game</h1>
+						</header>
+						<div class="instructions"><strong>Want to play a game? Guess what letter I'm thinking of</strong>
+						</div>
+						<div class="jumbotron">
+							<ul class="list-group">
+								<li class="list-group-item">WINS:<p id="wins">0</p></li>
+								<li class="list-group-item">LOSSES:<p id="losses">0</p></li>
+		            			<li class="list-group-item">GUESSES LEFT: <p id="guessesLeft"></p></li>
+								<li class="list-group-item">YOUR GUESSES SO FAR:<p id="guessSoFar"></p></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
 				</div>
 			</div>
-		</div>
-		<div class="col-md-4">
-		</div>
-	</div>
 	<footer>
 		<div class="container text-center">
-			<p>&copy; 2017 Tyler Barlow</p>
+			<p style="color: white;">&copy; 2017 Tyler Barlow</p>
 		</div>
 	</footer>
+	</div>
+</div>
 
-
-
-
-<script type="text/javascript">
-	// computer guesses
-
-	var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-	var wins = 0;
-	var losses = 0;
-	var	guessLeft = 9;
-	var guessesSoFar = [];
-	var userGuess = null;
-	document.querySelector('#guessesLeft').innerHTML = guessLeft;
-
-	// computer makes a guess and it stores it to computerGuess
-	var computerGuess = options[Math.floor(Math.random()*options.length)];
-	console.log(computerGuess);
-
-//function to reset GuessesSoFar and guessLeft
-function gameStart (){
-guessLeft = 9;
-guessesSoFar = [];
-computerGuess = computerGuess = options[Math.floor(Math.random()*options.length)];
-	console.log(computerGuess);
-document.querySelector('#guessSoFar').innerHTML = guessesSoFar;
-document.querySelector('#guessesLeft').innerHTML = guessLeft;
-}
-
-//when user presses a alphapet key, it records it to UserGuess
-document.onkeyup = function(event){
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-	console.log(userGuess)
-
-
-	if (guessesSoFar.indexOf(userGuess) < 0 && options.indexOf(userGuess) >= 0) {
-	guessesSoFar[guessesSoFar.length]=userGuess;
-		// if it is a new letter then decrease remaining guesses by 1
-	guessesLeft--;
-		document.querySelector('#guessSoFar').innerHTML = guessesSoFar;
-	}
-
-
-
-
-
-
-
-
-	if (userGuess === computerGuess) {
-	wins++;
-	document.querySelector('#wins').innerHTML = wins;
-	//console.log(wins)
-	setTimeout(gameStart, 3000);
-	//console.log(guessLeft, guessesSoFar, computerGuess)
-	}
-
-	else if (userGuess !== computerGuess && guessLeft > 0){
-	guessLeft--;
-	if (guessLeft == 0) {
-		setTimeout(gameStart, 2000);
-	}
-	document.querySelector('#guessesLeft').innerHTML = guessLeft;
-	//console.log(guessLeft)
-
-	}
-
-	else if (userGuess !== computerGuess && guessLeft === 0) {
-	losses++;
-	document.querySelector('#losses').innerHTML = losses;
-	console.log(losses)
-		setTimeout(gameStart, 3000);
- 	}
-}
-
-
-
-
+<script type="text/javascript" src="assets/javascript/game.js">
+	
 </script>
 </body>
 </html>
